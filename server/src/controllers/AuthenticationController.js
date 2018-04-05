@@ -29,12 +29,14 @@ module.exports = {
           email: email
         }
       })
+      // console.log(user.password)
       if (!user) {
-        return res.status(400).send({
+        return res.status(403).send({
           error: 'User not found'
         })
       }
       const isPassValid = await user.comparePassword(password)
+      // console.log(isPassValid)
       if (!isPassValid) {
         return res.status(403).send({
           error: 'Invalid Password'
