@@ -5,6 +5,7 @@
   <v-toolbar-title>Login</v-toolbar-title>
   
   </v-toolbar>
+  <form autocomplete="on">
     <div class="pl-4 pr-4 pt-2 pb-2">
       <v-text-field
     v-model="email"
@@ -15,6 +16,7 @@
   <v-text-field
     v-model="password"
     label="Password"
+    type="password"
     data-vv-name="Password"
     required
   ></v-text-field>
@@ -26,6 +28,7 @@
       <v-btn class="cyan" dark @click="login" >Login</v-btn>
       <br>
     </div>
+  </form>
     <!-- <v-text-field
     v-model="email"
     label="E-mail"
@@ -57,10 +60,14 @@ export default {
   },methods: {
     async login(){
       try {
+        this.error = ''
         const response = await AuthenticationService.login({
             email: this.email,
             password: this.password
           })
+         console.log(response.data.token) 
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
           //console.log(response.data)
       } catch (err) {
         this.error = err.response.data.error
