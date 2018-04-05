@@ -1,56 +1,30 @@
 <template>
-<v-flex xs6 offset-xs3 >
-<div class="white elevation-2">
-  <v-toolbar flat dense class="cyan" dark>
-  <v-toolbar-title>Register</v-toolbar-title>
-  
-  </v-toolbar>
+<panel title='Register'>
   <form autocomplete="off" name='tab-track'>
-    <div class="pl-4 pr-4 pt-2 pb-2">
-      <v-text-field
-        v-model="email"
-        label="E-mail"
-        data-vv-name="email"
-        required
-      ></v-text-field>
     <v-text-field
-      v-model="password"
-      label="Password"
-      type="password"
-      autocomplete="new-password"
-      data-vv-name="Password"
+      v-model="email"
+      label="E-mail"
+      data-vv-name="email"
       required
-    ></v-text-field> 
-      <!-- <input type="email" v-model="email" name="email" placeholder="email" autocomplete=false/>
-      <br>
-      <input type="password" v-model="password" name="password" placeholder="password"/>
-      <br> -->
-      <div v-html="error" class="error"/>
-      <v-btn class="cyan" dark @click="register" >Register</v-btn>
-      <br>
-    </div>
-  </form> 
-    <!-- <v-text-field
-    v-model="email"
-    label="E-mail"
-    data-vv-name="email"
-    required
-  ></v-text-field>
+    ></v-text-field>
   <v-text-field
     v-model="password"
     label="Password"
+    type="password"
+    autocomplete="new-password"
     data-vv-name="Password"
     required
-  ></v-text-field>
-  <button  @click="register">Register</button> -->
-  
- 
-</div> 
-</v-flex>
+  ></v-text-field>  
+  <div v-html="error" class="error"/>
+  <v-btn class="cyan" dark @click="register" >Register</v-btn>
+  <br>
+  </form> 
+</panel>
 </template>
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import panel from '@/components/Panel'
 export default {
   data () {
     return {
@@ -74,14 +48,13 @@ export default {
       }
 
     }
-  },
+  }, components: {
+    panel
+  }
 }
 </script>
 
 <style scoped>
-.error {
-  color: red;
-}
 
 
 </style>
