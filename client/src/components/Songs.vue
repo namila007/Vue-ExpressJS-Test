@@ -1,16 +1,31 @@
 <template>
-  <v-flex xs6 offset-xs3 >
+  <v-container>
     <panel title="Songs">
-      <h2>TEST</h2>
+      <div v-for="song in songs" :key="song.title">
+        {{song.title}}
+        {{song.artist}}
+        {{song.album}}
+      </div>
     </panel>
-</v-flex>
+  </v-container>
 </template>
 
 <script>
 import Panel from '@/components/Panel'
+import SongService from '@/services/SongService'
 export default {
   components: {
     Panel
+  },
+  data () {
+    return {
+      // array
+      songs: null
+      
+    }
+  },
+  async mounted () {
+    this.songs = await SongService.index()
   }
 }
 </script>
