@@ -3,8 +3,8 @@ module.exports = (sequelize, DataTypes) => {
     title: { type: DataTypes.STRING, unique: true },
     artist: { type: DataTypes.STRING, allowNull: false },
     album: DataTypes.STRING,
-    albumImageUrl: DataTypes.STRING,
-    youtubeId: DataTypes.STRING
+    albumImageUrl: DataTypes.TEXT,
+    youtubeId: DataTypes.TEXT
 
   })
   return Song

@@ -1,4 +1,5 @@
 <template>
+<v-flex xs5 md5 offset-xs4 align-center>
   <panel title="Login">
     <form autocomplete="on">
         <v-text-field
@@ -19,6 +20,7 @@
     <br>
     </form>
   </panel>
+</v-flex>
 </template>
 
 <script>
@@ -39,7 +41,7 @@ export default {
             email: this.email,
             password: this.password
           })
-         console.log(response.data.token) 
+        // console.log(response.data.token) 
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
           //console.log(response.data)

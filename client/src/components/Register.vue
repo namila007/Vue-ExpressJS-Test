@@ -1,4 +1,5 @@
 <template>
+<v-flex xs5 md5 offset-xs4 align-center>
 <panel title='Register'>
   <form autocomplete="off" name='tab-track'>
     <v-text-field
@@ -20,6 +21,7 @@
   <br>
   </form> 
 </panel>
+</v-flex>
 </template>
 
 <script>
