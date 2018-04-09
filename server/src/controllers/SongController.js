@@ -14,9 +14,27 @@ module.exports = {
   },
   async index (req, res) {
     try {
-      const songs = await Songs.findAll({
-        limit: 10
-      })
+      let songs = null
+      if (req.query.search) {
+        const search = req.query.search
+        if (search) {
+          songs = await Songs.findAll({
+            where: {
+              $or: [
+                'title', 'artist', 'album'
+              ].map(key => ({
+                [key]: {
+                  $like: `%${search}%`
+                }
+              }))
+            }
+          })
+        }
+      } else {
+        songs = await Songs.findAll({
+          limit: 10
+        })
+      }
       res.send(songs).status(200)
     } catch (err) {
       res.status(500).send({
@@ -41,6 +59,7 @@ module.exports = {
         error: 'Error Occured while fetching the song'
       })
     }
+    
   },
   async findSongbyId (req, res) {
     try {

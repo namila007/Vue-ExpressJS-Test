@@ -13,5 +13,12 @@ export default {
   },
   putSong (data) {
     return Api().put(`songs/id/${data.id}`, data)
+  },
+  searchbyTitle(data) {
+    return Api().get(`songs`, { 
+      params: {
+      search: data
+      }
+    })
   }
 }
