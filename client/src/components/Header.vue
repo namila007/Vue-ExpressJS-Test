@@ -9,7 +9,9 @@
     </v-toolbar-title>
     
   <v-toolbar-items>
-    <v-btn flat dark to='/songs' exact>
+    <v-btn flat dark :to="{
+      name: 'songs'
+      }" exact>
       Browse
     </v-btn>
     </v-toolbar-items >

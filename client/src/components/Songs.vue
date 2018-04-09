@@ -95,6 +95,8 @@ export default {
     } else {
       this.songs = (await SongService.index()).data;
     }
+    this.searchbox = ''
+    
   },
   methods: {
     viewsong(val) {
