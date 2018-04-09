@@ -25,7 +25,6 @@ module.exports = {
     }
   },
   async findSong (req, res) {
-    console.log(req.params.title)
     try {
       const song = await Songs.findOne({
         where: { title: req.params.title }
@@ -42,6 +41,37 @@ module.exports = {
         error: 'Error Occured while fetching the song'
       })
     }
+  },
+  async findSongbyId (req, res) {
+    try {
+      const song = await Songs.findOne({
+        where: { id: req.params.id }
+      })
+      if (!song) {
+        res.status(404).send({
+          error: 'Song ' + req.params.id + ' does not found'
+        })
+      } else {
+        res.send(song)
+      }
+    } catch (err) {
+      res.status(500).send({
+        error: 'Error Occured while fetching the song'
+      })
+    }
+  },
+  async put (req, res) {
+    console.log(req.body)
+    try {
+      const song = await Songs.update(req.body, {
+        where: { id: req.params.id }
+      })
+      res.status(200).send(req.body)
+    } catch (err) {
+      console.log(err)
+      res.status(500).send({
+        error: 'Error Occured while updating the song'
+      })
+    }
   }
-
 }

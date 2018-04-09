@@ -6,6 +6,12 @@ export default {
     return Api().get('songs') 
   },
   addSong (data) {
-    return Api().post('songs',data)
+    return Api().post('songs', data)
+  },
+  getSongbyId (data) {
+    return Api().get('songs/id/' + data)
+  },
+  putSong (data) {
+    return Api().put(`songs/id/${data.id}`, data)
   }
 }

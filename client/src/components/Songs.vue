@@ -77,7 +77,7 @@ export default {
   } ,
   methods: {
      viewsong(val) {
-       console.log(val)
+       // console.log(val)
        this.$router.push({
          name: 'viewsong',
          params: {
