@@ -28,4 +28,5 @@ module.exports = (app) => {
 
   app.post('/bookmarks', BookmarkController.post)
   app.get('/bookmarks', BookmarkController.index)
+  app.delete('/bookmarks', BookmarkController.delete)
 }

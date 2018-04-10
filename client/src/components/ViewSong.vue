@@ -14,11 +14,25 @@
            {{song.album}}
           </div>
           <v-layout class="row">
-          <v-flex xs1 md1 offset-md2 offset-xs2>
-            <v-btn :href="song.youtubeId" class="red " >
-            <i class="material-icons">music_video</i>
+            <v-flex >
+              <v-btn :href="song.youtubeId" class="red " >
+              <i class="material-icons">music_video</i>
+              </v-btn>
+            </v-flex>
+          </v-layout>
+          <v-layout class="row">
+            <v-flex>
+            <v-btn 
+              v-if="$store.state.isUserLogged && !this.bookmark"
+              v-on:click="setbookmark(song.id)" >
+              <v-icon>bookmark</v-icon>Bookmark
             </v-btn>
-          </v-flex>
+            <v-btn
+              v-if="$store.state.isUserLogged && this.bookmark"
+              v-on:click="unsetbookmark()" >
+              <v-icon>bookmark</v-icon>Remove bookmark
+            </v-btn>
+            </v-flex>
           </v-layout>
         </v-flex>
         <v-flex xs4 md4 >
@@ -44,25 +58,58 @@
 <script>
 import panel from '@/components/Panel'
 import SongService from '@/services/SongService'
+import BookmarkService from '@/services/BookmarkService'
 export default {
   components: {
     panel
   }, 
   methods: {
     edit  (val) {
-      console.log(val)
+      //console.log(val)
       this.$router.push({
         name: 'editsong', 
         params: {
           songId: val
         }
       })
-    }
-    
-
+    },
+    async setbookmark(songId) {
+      if (this.$store.state.isUserLogged) {
+        const userId = this.$store.state.user.id
+        const data = {
+          UserId: userId,
+          SongId: songId
+        }
+        this.bookmark = (await BookmarkService.post(data)).data
+        this.$router.push({
+        name: "viewsong",
+        params: {
+          songId: this.$store.state.route.params.songId
+        }
+      })
+      } else {
+        console.log('log in')
+      }
+    },
+    async unsetbookmark() {
+      if (this.$store.state.isUserLogged) {
+        await BookmarkService.delete(this.bookmark.id)
+        this.bookmark = null
+      } else {
+        console.log('log in')
+      }
+      this.$router.push({
+        name: "viewsong",
+        params: {
+          songId: this.$store.state.route.params.songId
+        }
+      })
+    }  
   }, data () {
     return {
-       song: null 
+       song: null,
+       isBookmarked: false,
+       bookmark: null
     }
   },
   async mounted() {
@@ -70,13 +117,36 @@ export default {
     const song = await SongService.getSongbyId(songId)
     // console.log(song.data)
     this.song = song.data 
+    const userId = this.$store.state.user.id
+    if (this.$store.state.isUserLogged) {
+      const data1 = {
+          userId: userId,
+          songId: songId
+        }
+      this.bookmark = (await BookmarkService.index(data1)).data
+    }
+
   }
 }
 </script>
 
 <style scoped>
-.song-image {
-  width: 70%;
-  height: 70%;
+.album-img {
+  width: 100%;
+  margin: 0 auto;
+}
+.song-title {
+  font-size: 30px;
+  font-style: bold;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.song-artist {
+  font-size: 20px;
+  font-style: bold;
+}
+.song-album {
+  font-size: 16px;
+  font-style: bold;
 }
 </style>

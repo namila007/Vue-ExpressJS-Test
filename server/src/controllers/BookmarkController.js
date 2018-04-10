@@ -4,16 +4,26 @@ module.exports = {
 
   async index (req, res) {
     try {
-      const { songId, userId } = req.query
-      const bookmark = await Bookmarks.findOne({
-        where: {
-          SongId: songId,
-          UserId: userId
-        }
-      })
+      let bookmark = null
+      if (req.query.userId && req.query.songId) {
+        const { songId, userId } = req.query
+        bookmark = await Bookmarks.findOne({
+          where: {
+            SongId: songId,
+            UserId: userId
+          }
+        })
+      } else {
+        const { userId } = req.query
+        bookmark = await Bookmarks.findAll({
+          where: {
+            UserId: userId
+          }
+        })
+      }
+      // console.log(bookmark)
       res.send(bookmark).status(200)
     } catch (err) {
-      console.log(err)
       res.send({
         err: 'error occured'
       })
@@ -21,13 +31,34 @@ module.exports = {
   },
   async post (req, res) {
     try {
-      const { songId, userId } = req.body
-      console.log(req.body)
-      const bookmark = await Bookmarks.create({
-        SongId: songId,
-        UserId: userId
+      const {SongId, UserId} = req.body
+      const book = await Bookmarks.findOrCreate({
+        where: {
+          SongId: SongId,
+          UserId: UserId
+        }
+      }).spread((user, created) => {
+        console.log(user.get({
+          plain: true
+        }))
+        console.log(created)
+        res.send(user)
       })
-      res.send(bookmark).status(201)
+      
+    } catch (err) {
+      console.log(err)
+      res.send({
+        err: 'error occured'
+      })
+    }
+  },
+  async delete (req, res) {
+    try {
+      const bookmarkId = req.body
+      console.log(req.body)
+      const book = await Bookmarks.findById(bookmarkId.id)
+      await book.destroy()
+      res.send(book)
     } catch (err) {
       console.log(err)
       res.send({

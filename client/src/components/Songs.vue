@@ -121,7 +121,7 @@ export default {
         this.$router.push(route);
 
         const song = await SongService.searchbyTitle(this.searchbox);
-        console.log(song.data);
+        // console.log(song.data);
         this.songs = song.data;
       }
     }
