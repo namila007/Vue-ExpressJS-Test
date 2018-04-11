@@ -136,7 +136,6 @@ export default {
     const userId = this.$store.state.user.id
     if (this.$store.state.isUserLogged) {
       const data1 = {
-          userId: userId
         }
       this.bookmarks = (await BookmarkService.index(data1)).data
     }

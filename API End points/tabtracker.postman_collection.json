@@ -1,0 +1,401 @@
+{
+	"info": {
+		"name": "tabtracker",
+		"_postman_id": "e908b775-8643-4b98-02c1-2f1bb3e69d75",
+		"description": "all API endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"testing@gmail.com\",\n\t\"password\":\"123456789sd\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"login"
+					]
+				},
+				"description": "\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"testing@gmail.com\",\n\t\"password\":\"123456789sd\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"register"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get all songs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8081/songs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"songs"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "add song",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0aW5nQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDA4JHY1cDRPY1lWTVI0dWFkYzNycHVpcE95NlhabUNwM3gxWnZjSHgzOFZ0dzBFVU5TLlVMUnRTIiwiY3JlYXRlZEF0IjoiMjAxOC0wNC0wOVQyMTowOTo0Ny4yNzdaIiwidXBkYXRlZEF0IjoiMjAxOC0wNC0wOVQyMTowOTo0Ny4yNzdaIiwiaWF0IjoxNTIzNDY2NDI2LCJleHAiOjE1MjM0NjY3MjZ9.eJ4h5eKiYSd_NGjNAi_OQ4IW8PHYxe1zb7sgjr-AJK8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n    {\n        \n        \"title\": \"Titanic 2\",\n        \"artist\": \"Crew\",\n        \"album\": \"Titanic\",\n        \"albumImageUrl\": \"https://upload.wikimedia.org/wikipedia/en/b/ba/VA_-_Titanic_-_OST.JPG\",\n        \"youtubeId\": \"youtube.com/u/324234\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8081/songs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"songs"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get song by title",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8081/songs/title/Saragaye",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"songs",
+						"title",
+						"Saragaye"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get song by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8081/songs/id/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"songs",
+						"id",
+						"2"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "update song",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0aW5nQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDA4JHY1cDRPY1lWTVI0dWFkYzNycHVpcE95NlhabUNwM3gxWnZjSHgzOFZ0dzBFVU5TLlVMUnRTIiwiY3JlYXRlZEF0IjoiMjAxOC0wNC0wOVQyMTowOTo0Ny4yNzdaIiwidXBkYXRlZEF0IjoiMjAxOC0wNC0wOVQyMTowOTo0Ny4yNzdaIiwiaWF0IjoxNTIzNDY2NDI2LCJleHAiOjE1MjM0NjY3MjZ9.eJ4h5eKiYSd_NGjNAi_OQ4IW8PHYxe1zb7sgjr-AJK8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\t\"id\": 1,\n        \"title\": \"Saragaye Originals\",\n        \"artist\": \"Sanuka\",\n        \"album\": \"Saragaye\",\n        \"albumImageUrl\": \"https://1.bp.blogspot.com/-sh-21ChD8Vk/WQ6oWk6Z6fI/AAAAAAAAACU/VNkvcp_IR-M0Lu1B9eNsEypfYtFBWOAWQCLcB/s320/Saragaye.jpg\",\n        \"youtubeId\": \"https://www.youtube.com/watch?v=izKxgHWzQ80\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/songs/id/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"songs",
+						"id",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get song",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8081/songs?search=sar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"songs"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "sar",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get all users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8081/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"users"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "bookmark user n song",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0aW5nQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDA4JHY1cDRPY1lWTVI0dWFkYzNycHVpcE95NlhabUNwM3gxWnZjSHgzOFZ0dzBFVU5TLlVMUnRTIiwiY3JlYXRlZEF0IjoiMjAxOC0wNC0wOVQyMTowOTo0Ny4yNzdaIiwidXBkYXRlZEF0IjoiMjAxOC0wNC0wOVQyMTowOTo0Ny4yNzdaIiwiaWF0IjoxNTIzNDY2MTkwLCJleHAiOjE1MjM0NjY0OTB9.pTX_aM-lc-dHbPJfy4LBOMmOE7h44Wx6uHaycofY_Yo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8081/bookmarks?songId=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"bookmarks"
+					],
+					"query": [
+						{
+							"key": "songId",
+							"value": "2",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "save bookmark user n song",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t \"songId\": 1,\n     \"userId\": 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/bookmarks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"bookmarks"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Bookmarks by UserId",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0aW5nQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDA4JHY1cDRPY1lWTVI0dWFkYzNycHVpcE95NlhabUNwM3gxWnZjSHgzOFZ0dzBFVU5TLlVMUnRTIiwiY3JlYXRlZEF0IjoiMjAxOC0wNC0wOVQyMTowOTo0Ny4yNzdaIiwidXBkYXRlZEF0IjoiMjAxOC0wNC0wOVQyMTowOTo0Ny4yNzdaIiwiaWF0IjoxNTIzNDY2MTkwLCJleHAiOjE1MjM0NjY0OTB9.pTX_aM-lc-dHbPJfy4LBOMmOE7h44Wx6uHaycofY_Yo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8081/bookmarks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"bookmarks"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete bookmark",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0aW5nQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDA4JHY1cDRPY1lWTVI0dWFkYzNycHVpcE95NlhabUNwM3gxWnZjSHgzOFZ0dzBFVU5TLlVMUnRTIiwiY3JlYXRlZEF0IjoiMjAxOC0wNC0wOVQyMTowOTo0Ny4yNzdaIiwidXBkYXRlZEF0IjoiMjAxOC0wNC0wOVQyMTowOTo0Ny4yNzdaIiwiaWF0IjoxNTIzNDY2MTkwLCJleHAiOjE1MjM0NjY0OTB9.pTX_aM-lc-dHbPJfy4LBOMmOE7h44Wx6uHaycofY_Yo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t \"id\": 14\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/bookmarks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"bookmarks"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

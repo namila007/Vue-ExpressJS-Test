@@ -75,9 +75,7 @@ export default {
     },
     async setbookmark(songId) {
       if (this.$store.state.isUserLogged) {
-        const userId = this.$store.state.user.id
         const data = {
-          UserId: userId,
           SongId: songId
         }
         this.bookmark = (await BookmarkService.post(data)).data
@@ -116,11 +114,9 @@ export default {
     const songId = this.$store.state.route.params.songId
     const song = await SongService.getSongbyId(songId)
     // console.log(song.data)
-    this.song = song.data 
-    const userId = this.$store.state.user.id
+    this.song = song.data
     if (this.$store.state.isUserLogged) {
       const data1 = {
-          userId: userId,
           songId: songId
         }
       this.bookmark = (await BookmarkService.index(data1)).data
