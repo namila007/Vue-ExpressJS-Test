@@ -1,0 +1,603 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: tabtracker
+  description: all API endpoints
+host: 'localhost:8081'
+basePath: /
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /login:
+    post:
+      description: |+
+
+      summary: Login
+      operationId: LoginPost
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/LoginRequest'
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+      security: []
+      x-unitTests:
+        - request:
+            method: POST
+            uri: /login
+            headers:
+              Content-Type: application/json
+            body: '{"email":"testing@gmail.com","password":"123456789sd"}'
+          expectedResponse:
+            x-allowExtraHeaders: true
+            x-bodyMatchMode: NONE
+            x-arrayOrderedMatching: false
+            x-arrayCheckCount: false
+            x-matchResponseSchema: true
+            headers: {}
+          x-testShouldPass: true
+          x-testEnabled: true
+          x-testName: Login
+          x-testDescription: |+
+
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /register:
+    post:
+      description: ''
+      summary: Register
+      operationId: RegisterPost
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/RegisterRequest'
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+      security: []
+      x-unitTests:
+        - request:
+            method: POST
+            uri: /register
+            headers:
+              Content-Type: application/json
+            body: '{"email":"testing@gmail.com","password":"123456789sd"}'
+          expectedResponse:
+            x-allowExtraHeaders: true
+            x-bodyMatchMode: NONE
+            x-arrayOrderedMatching: false
+            x-arrayCheckCount: false
+            x-matchResponseSchema: true
+            headers: {}
+          x-testShouldPass: true
+          x-testEnabled: true
+          x-testName: Register
+          x-testDescription: ''
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /songs:
+    get:
+      description: ''
+      summary: get song
+      operationId: SongsGet2
+      produces:
+        - application/json
+      parameters:
+        - name: search
+          in: query
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+      security: []
+      x-unitTests:
+        - request:
+            method: GET
+            uri: /songs?search=sar
+          expectedResponse:
+            x-allowExtraHeaders: true
+            x-bodyMatchMode: NONE
+            x-arrayOrderedMatching: false
+            x-arrayCheckCount: false
+            x-matchResponseSchema: true
+            headers: {}
+          x-testShouldPass: true
+          x-testEnabled: true
+          x-testName: get song
+          x-testDescription: ''
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: ''
+      summary: add song
+      operationId: SongsPost
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/AddSongrequest'
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+      security: []
+      x-unitTests:
+        - request:
+            method: POST
+            uri: /songs
+            headers:
+              Content-Type: application/json
+            body: '{"title":"Titanic 2","artist":"Crew","album":"Titanic","albumImageUrl":"https://upload.wikimedia.org/wikipedia/en/b/ba/VA_-_Titanic_-_OST.JPG","youtubeId":"youtube.com/u/324234"}'
+          expectedResponse:
+            x-allowExtraHeaders: true
+            x-bodyMatchMode: NONE
+            x-arrayOrderedMatching: false
+            x-arrayCheckCount: false
+            x-matchResponseSchema: true
+            headers: {}
+          x-testShouldPass: true
+          x-testEnabled: true
+          x-testName: add song
+          x-testDescription: ''
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /songs/title/Saragaye:
+    get:
+      description: ''
+      summary: get song by title
+      operationId: SongsTitleSaragayeGet
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      security: []
+      x-unitTests:
+        - request:
+            method: GET
+            uri: /songs/title/Saragaye
+          expectedResponse:
+            x-allowExtraHeaders: true
+            x-bodyMatchMode: NONE
+            x-arrayOrderedMatching: false
+            x-arrayCheckCount: false
+            x-matchResponseSchema: true
+            headers: {}
+          x-testShouldPass: true
+          x-testEnabled: true
+          x-testName: get song by title
+          x-testDescription: ''
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /songs/id/2:
+    get:
+      description: ''
+      summary: get song by id
+      operationId: SongsId2Get
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      security: []
+      x-unitTests:
+        - request:
+            method: GET
+            uri: /songs/id/2
+          expectedResponse:
+            x-allowExtraHeaders: true
+            x-bodyMatchMode: NONE
+            x-arrayOrderedMatching: false
+            x-arrayCheckCount: false
+            x-matchResponseSchema: true
+            headers: {}
+          x-testShouldPass: true
+          x-testEnabled: true
+          x-testName: get song by id
+          x-testDescription: ''
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /songs/id/1:
+    put:
+      description: ''
+      summary: update song
+      operationId: SongsId1Put
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/UpdateSongrequest'
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+      security: []
+      x-unitTests:
+        - request:
+            method: PUT
+            uri: /songs/id/1
+            headers:
+              Content-Type: application/json
+            body: '{"id":1,"title":"Saragaye Originals","artist":"Sanuka","album":"Saragaye","albumImageUrl":"https://1.bp.blogspot.com/-sh-21ChD8Vk/WQ6oWk6Z6fI/AAAAAAAAACU/VNkvcp_IR-M0Lu1B9eNsEypfYtFBWOAWQCLcB/s320/Saragaye.jpg","youtubeId":"https://www.youtube.com/watch?v=izKxgHWzQ80"}'
+          expectedResponse:
+            x-allowExtraHeaders: true
+            x-bodyMatchMode: NONE
+            x-arrayOrderedMatching: false
+            x-arrayCheckCount: false
+            x-matchResponseSchema: true
+            headers: {}
+          x-testShouldPass: true
+          x-testEnabled: true
+          x-testName: update song
+          x-testDescription: ''
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /users:
+    get:
+      description: ''
+      summary: get all users
+      operationId: UsersGet
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      security: []
+      x-unitTests:
+        - request:
+            method: GET
+            uri: /users
+          expectedResponse:
+            x-allowExtraHeaders: true
+            x-bodyMatchMode: NONE
+            x-arrayOrderedMatching: false
+            x-arrayCheckCount: false
+            x-matchResponseSchema: true
+            headers: {}
+          x-testShouldPass: true
+          x-testEnabled: true
+          x-testName: get all users
+          x-testDescription: ''
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /bookmarks:
+    get:
+      description: ''
+      summary: Bookmarks by UserId
+      operationId: BookmarksGet2
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      security: []
+      x-unitTests:
+        - request:
+            method: GET
+            uri: /bookmarks
+          expectedResponse:
+            x-allowExtraHeaders: true
+            x-bodyMatchMode: NONE
+            x-arrayOrderedMatching: false
+            x-arrayCheckCount: false
+            x-matchResponseSchema: true
+            headers: {}
+          x-testShouldPass: true
+          x-testEnabled: true
+          x-testName: Bookmarks by UserId
+          x-testDescription: ''
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: ''
+      summary: save bookmark user n song
+      operationId: BookmarksPost
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/SaveBookmarkUserNSongrequest'
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+      security: []
+      x-unitTests:
+        - request:
+            method: POST
+            uri: /bookmarks
+            headers:
+              Content-Type: application/json
+            body: '{"songId":1,"userId":1}'
+          expectedResponse:
+            x-allowExtraHeaders: true
+            x-bodyMatchMode: NONE
+            x-arrayOrderedMatching: false
+            x-arrayCheckCount: false
+            x-matchResponseSchema: true
+            headers: {}
+          x-testShouldPass: true
+          x-testEnabled: true
+          x-testName: save bookmark user n song
+          x-testDescription: ''
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    delete:
+      description: ''
+      summary: delete bookmark
+      operationId: BookmarksDelete
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/DeleteBookmarkrequest'
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+      security: []
+      x-unitTests:
+        - request:
+            method: DELETE
+            uri: /bookmarks
+            headers:
+              Content-Type: application/json
+            body: '{"id":14}'
+          expectedResponse:
+            x-allowExtraHeaders: true
+            x-bodyMatchMode: NONE
+            x-arrayOrderedMatching: false
+            x-arrayCheckCount: false
+            x-matchResponseSchema: true
+            headers: {}
+          x-testShouldPass: true
+          x-testEnabled: true
+          x-testName: delete bookmark
+          x-testDescription: ''
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+definitions:
+  LoginRequest:
+    title: LoginRequest
+    example:
+      email: testing@gmail.com
+      password: 123456789sd
+    type: object
+    properties:
+      email:
+        description: ''
+        example: testing@gmail.com
+        type: string
+      password:
+        description: ''
+        example: 123456789sd
+        type: string
+    required:
+      - email
+      - password
+  RegisterRequest:
+    title: RegisterRequest
+    example:
+      email: testing@gmail.com
+      password: 123456789sd
+    type: object
+    properties:
+      email:
+        description: ''
+        example: testing@gmail.com
+        type: string
+      password:
+        description: ''
+        example: 123456789sd
+        type: string
+    required:
+      - email
+      - password
+  AddSongrequest:
+    title: add songRequest
+    example:
+      title: Titanic 2
+      artist: Crew
+      album: Titanic
+      albumImageUrl: 'https://upload.wikimedia.org/wikipedia/en/b/ba/VA_-_Titanic_-_OST.JPG'
+      youtubeId: youtube.com/u/324234
+    type: object
+    properties:
+      title:
+        description: ''
+        example: Titanic 2
+        type: string
+      artist:
+        description: ''
+        example: Crew
+        type: string
+      album:
+        description: ''
+        example: Titanic
+        type: string
+      albumImageUrl:
+        description: ''
+        example: 'https://upload.wikimedia.org/wikipedia/en/b/ba/VA_-_Titanic_-_OST.JPG'
+        type: string
+      youtubeId:
+        description: ''
+        example: youtube.com/u/324234
+        type: string
+    required:
+      - title
+      - artist
+      - album
+      - albumImageUrl
+      - youtubeId
+  UpdateSongrequest:
+    title: update songRequest
+    example:
+      id: 1
+      title: Saragaye Originals
+      artist: Sanuka
+      album: Saragaye
+      albumImageUrl: 'https://1.bp.blogspot.com/-sh-21ChD8Vk/WQ6oWk6Z6fI/AAAAAAAAACU/VNkvcp_IR-M0Lu1B9eNsEypfYtFBWOAWQCLcB/s320/Saragaye.jpg'
+      youtubeId: 'https://www.youtube.com/watch?v=izKxgHWzQ80'
+    type: object
+    properties:
+      id:
+        description: ''
+        example: 1
+        type: integer
+        format: int32
+      title:
+        description: ''
+        example: Saragaye Originals
+        type: string
+      artist:
+        description: ''
+        example: Sanuka
+        type: string
+      album:
+        description: ''
+        example: Saragaye
+        type: string
+      albumImageUrl:
+        description: ''
+        example: 'https://1.bp.blogspot.com/-sh-21ChD8Vk/WQ6oWk6Z6fI/AAAAAAAAACU/VNkvcp_IR-M0Lu1B9eNsEypfYtFBWOAWQCLcB/s320/Saragaye.jpg'
+        type: string
+      youtubeId:
+        description: ''
+        example: 'https://www.youtube.com/watch?v=izKxgHWzQ80'
+        type: string
+    required:
+      - id
+      - title
+      - artist
+      - album
+      - albumImageUrl
+      - youtubeId
+  SaveBookmarkUserNSongrequest:
+    title: save bookmark user n songRequest
+    example:
+      songId: 1
+      userId: 1
+    type: object
+    properties:
+      songId:
+        description: ''
+        example: 1
+        type: integer
+        format: int32
+      userId:
+        description: ''
+        example: 1
+        type: integer
+        format: int32
+    required:
+      - songId
+      - userId
+  DeleteBookmarkrequest:
+    title: delete bookmarkRequest
+    example:
+      id: 14
+    type: object
+    properties:
+      id:
+        description: ''
+        example: 14
+        type: integer
+        format: int32
+    required:
+      - id
